@@ -596,11 +596,12 @@ footer{
     width: 600px;
     margin: 0 auto 30px auto;
     padding: 20px;
-    border: 1px solid #eee;
+    border: 1px solid blue;
     border-radius: 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     color: #2e373f;
+    margin-top: 2%;
 }
 
 #admin h1{
@@ -622,7 +623,7 @@ footer{
 }
 
 #admin p input, #admin p textarea {
-    border: 1px solid #eee;
+    border: 1px solid #000000;
     padding: 10px;
     border-radius: 10px;
     -moz-border-radius: 10px;
@@ -865,3 +866,75 @@ section#promo .default-btn, .default-btn {
     box-shadow: 0px 5px 0px #b8b8b8;
     text-decoration: none;
 }
+
+/* IE7 Padding Fix */
+.lt-ie8 .default-btn, .lt-ie8 .secondary-btn,
+.lt-ie8 .tertiary-btn {
+    display: inline-block;
+}
+
+/* IE7&8 Tertiary-btn Fix */
+.lt-ie9 .tertiary-btn {
+    position: relative;
+    top: 10px;
+}
+
+.cart-btn {
+    padding: 10px 10px 10px 0;
+    background-color: #5daad0;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+/* IE7 Button Padding Fix */
+.lt-ie8 .cart-btn {
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.cart-btn .price {
+    background-color: #2e373f;
+    padding: 10px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+}
+
+.cart-btn:link, .cart-btn:visited, button.cart-btn {
+    text-decoration: none;
+    color: #fff;
+    font-size: 12px;
+}
+
+button.cart-btn {
+    border: none;
+}
+
+.secondary-cart-btn {
+    background-color: #5daad0;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    box-shadow: 0px 5px 0px #467f9c;
+    border: none;
+}
+
+/* ==========================================================================
+   Misc.
+   ========================================================================== */
+
+.alert {
+    background-color: #faf9f9;
+    color: #5daad0;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    width: 1050px;
+}
+

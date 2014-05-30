@@ -1,25 +1,36 @@
 <?php
 
-
+/**
+ * Class CategoriesController - класс категории заметок
+ */
 class CategoriesController extends BaseController{
-	
-	public function __construct(){
+
+    /**
+     * __construct() - конструктор , установили фильтр для защиты от нежелательных атак
+     */
+    public function __construct(){
 		$this->beforeFilter('csrf', array('on'=>'post'));
 
 	}
 
-
-	public function getIndex(){
+    /**
+     * getIndex() - метод загрузки страницы категорий
+     * @return mixed
+     */
+    public function getIndex(){
 		return View::make('categories.index')
-					->with('message', Category::all());
+					->with('categories', Category::all());
 	}
 
 
-
-	public function postCreate(){
+    /**
+     * postCreate() - метод создания новой категории
+     * @return mixed
+     */
+    public function postCreate(){
 		$validator = Validator::make(Input::all(), Category::$rules);
 
-		if($validator){
+		if($validator->passes()){
 			$category = new Category;
 			$category->name = Input::get('name');
 			$category->save();
@@ -35,8 +46,11 @@ class CategoriesController extends BaseController{
 	}
 
 
-
-	public function postDestroy(){
+    /**
+     * postDestroy() - метод удаления категории
+     * @return mixed
+     */
+    public function postDestroy(){
 		$category = Category::find(Input::get('id'));
 
 		if ($category){
@@ -47,7 +61,6 @@ class CategoriesController extends BaseController{
 
 		return Redirect::to('admin/categories/index')
 						->with('message', 'Что то пошло не так, пожалуйста попробуйте снова!!!');
-
 	}
 
 

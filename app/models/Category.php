@@ -1,10 +1,29 @@
 <?php
 
+/**
+ * Class Category
+ */
 class Category extends Eloquent{
 
-	protected $fillable = array('name');  
+    /**
+     * $fillable -  массив защищенных полей
+     * @var array
+     */
+    protected $fillable = array('name');
 
-	public static $rules = array('name'  => 'required|min:3');
+    /**
+     * $rules - массив ограничений для ввода значений полей в форме
+     * @var array
+     */
+    public static $rules = array('name'  => 'required|min:3');
+
+    /**
+     * posts() - метод для связи с таблицей заметок
+     * @return mixed
+     */
+    public function posts(){
+        return $this->hasMany('Posts');
+    }
 
 	
 }
