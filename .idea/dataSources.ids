@@ -37,13 +37,13 @@
     <table name="posts" schema="" catalog="bloglaravel" type="TABLE">
       <column name="id" sqlType="INT UNSIGNED" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="category_id" sqlType="INT UNSIGNED" length="10" precision="0" nullable="false" jdbcType="4"/>
-      <column name="post_author" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="post_author" sqlType="TEXT" length="65535" precision="0" nullable="false" jdbcType="-1"/>
       <column name="post_date" sqlType="DATE" length="10" precision="0" nullable="false" jdbcType="91"/>
       <column name="post_content" sqlType="TEXT" length="65535" precision="0" nullable="false" jdbcType="-1"/>
       <column name="post_title" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
       <column name="comment_count" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="keywords" sqlType="TEXT" length="65535" precision="0" nullable="false" jdbcType="-1"/>
-      <column name="availability" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <column name="availability" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6" def="MA=="/>
       <column name="image" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
       <column name="created_at" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="updated_at" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>

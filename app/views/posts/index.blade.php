@@ -23,8 +23,14 @@
 
             {{ Form::open(array('url' => 'admin/posts/toggle-availability', 'class' => 'form-inline' )) }}
             {{ Form::hidden('id', $post->id) }}
-            {{ Form::select('availability', array('1' => 'Опубликовано'), '0' => 'Не опубликовано'), $post->availability }}
+            {{ Form::select('availability', array('0' => 'Не опубликовано', '1' => 'Опубликовано' ), $post->availability) }}
             {{ Form::submit('Обновить') }}
+            {{ Form::close() }}
+
+
+            {{ Form::open(array('url' => 'admin/posts/edit-post', 'class' => 'form-inline' )) }}
+            {{ Form::hidden('id', $post->id) }}
+            {{ Form::submit('Редактировать') }}
             {{ Form::close() }}
 
         </li>
@@ -41,7 +47,7 @@
         <p>Были следущие ошибки:</p>
         <ul>
             @foreach($errors->all() as $error)
-            <li>{{ $error }}</li>
+                <li>{{ $error }}</li>
             @endforeach
         </ul>
     </div><!-- end form-errors -->
@@ -49,40 +55,36 @@
 
 
 
-
-
-    {{ Form::open(array('url'=>'admin/posts/create')) }}
+    {{ Form::open(array('url'=>'admin/posts/create', 'files' => true)) }}
     <p>
-        {{ Form::label('Названия категории') }}
-        {{ Form::text('name') }}
+        {{ Form::label('category_id' ,'Категория') }}
+        {{ Form::select('category_id', $categories) }}
+    </p>
+    <p>
+        {{ Form::label('Названия') }}
+        {{ Form::text('post_title') }}
+    </p>
+    <p>
+        {{ Form::label('Описания') }}
+        {{ Form::textarea('post_content') }}
+    </p>
+
+    <p>
+        {{ Form::label('Автор') }}
+        {{ Form::text('post_author') }}
+    </p>
+    <p>
+        {{ Form::label('Ключевые слова') }}
+        {{ Form::text('keywords') }}
+    </p>
+    <p>
+        {{ Form::label('image', 'Выберите картинку для заметки') }}
+        {{ Form::file('image') }}
     </p>
     {{ Form::submit('Создать заметку', array('class'=> 'secondary-btn')) }}
     {{ Form::close() }}
 
-
-
-
-    $posts->post_title    = Input::get('post_title');
-    $posts->post_author   = Input::get('post_author');
-    $posts->post_date     = date('Y-m-d:H:i:s');
-    $posts->post_content  = Input::get('post_content');
-    $posts->category_id   = Input::get('category_id');
-    $posts->comment_count = Input::get('comment_count');
-    $posts->keywords      = Input::get('keywords');
-
-
-
-
-
-
-
-
-
-
-
 </div> <!-- end admin -->
-
-
 
 
 @stop

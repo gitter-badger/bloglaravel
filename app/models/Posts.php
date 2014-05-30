@@ -14,9 +14,6 @@ class Posts extends Eloquent{
 								'post_date',
 								'post_content',
 								'category_id',
-								'post_status',
-								'post_parent',
-								'comment_count',
                                 'image',
                                 'availability'
 								);
@@ -27,14 +24,10 @@ class Posts extends Eloquent{
      */
     public static $rules = array('post_title'  => 'required|min:3',
 								'post_author'  => 'required|min:3',
-								'post_date'    => 'required|date',
 								'post_content' => 'required|min:30',
 								'category_id'  => 'required|min:1',
-								'post_status'  => 'required|min:1',
-								'post_parent'  => 'required|min:1',
-								'comment_count'=> 'required|min:1',
                                 'availability' => 'integer',
-                                'image'        => 'require|image'
+                                'image'        =>' required|image|mimes:jpeg, jpg, bmp, png, gif'
 								);
 
 

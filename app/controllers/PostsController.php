@@ -43,7 +43,6 @@ class PostsController extends BaseController{
 			$posts->post_date     = date('Y-m-d:H:i:s');
 			$posts->post_content  = Input::get('post_content');
 			$posts->category_id   = Input::get('category_id');
-			$posts->comment_count = Input::get('comment_count');
             $posts->keywords      = Input::get('keywords');
                 $image = Input::file('image');
                 $filename = time('Y-m-d:H:i:s') . "-" . $image->getClientOriginalname();
@@ -52,7 +51,7 @@ class PostsController extends BaseController{
 			$posts->save();
 
 			return Redirect::to('admin/posts/index')
-							->with('Заметка была создана');
+							->with('message','Заметка была создана');
 		}
 		
 		return Redirect::to('admin/posts/index')
@@ -81,8 +80,11 @@ class PostsController extends BaseController{
 	}
 
 
-
-    public function ToggleAvailability(){
+    /**
+     * ToggleAvailability() - метод публикации или не пуликации заметки
+     * @return mixed
+     */
+    public function postToggleAvailability(){
         $post = Posts::find(Input::get('id'));
 
         if($post){
@@ -97,7 +99,53 @@ class PostsController extends BaseController{
                         ->with('message', 'Обновления заметки не совершилось!!!');
     }
 
+    /**
+     * postEditPost() - редактирование заметки
+     * @return mixed
+     */
+    public function postEditPost(){
+        $categories = array();
 
+        foreach(Category::all() as $category){
+            $categories[$category->id] = $category->name;
+        }
+
+        $postdata = Posts::find(Input::get('id'));
+        return View::make('posts.edit')
+                        ->with('message','Изменения были сохранены успешно!!!')
+                        ->with('categories', $categories)
+                        ->with('postdata', $postdata);
+
+
+
+        $validator = Validator::make(Input::all(), Posts::$rules);
+
+        if($validator->passes()){
+            $postdata->post_title    = Input::get('post_title');
+            $postdata->post_author   = Input::get('post_author');
+            $postdata->post_date     = date('Y-m-d:H:i:s');
+            $postdata->post_content  = Input::get('post_content');
+            $postdata->category_id   = Input::get('category_id');
+            $postdata->keywords      = Input::get('keywords');
+            $image = Input::file('image');
+            $filename = time('Y-m-d:H:i:s') . "-" . $image->getClientOriginalname();
+            Image::make($image->getRealPath())->resize(468,249)->save('public/img/products/' . $filename);
+            $postdata->image = 'img/products/' . $filename;
+            $postdata->save();
+
+            return Redirect::to('admin/posts/index')
+                ->with('message','Заметка была отредактирована');
+        }
+
+        return Redirect::to('admin/posts/index')
+            ->with('message', 'Редактирование заметки заметки завершилось неудачей. Исправте ошибки!!!')
+            ->withErrors($validator)
+            ->withInput();
+
+
+
+
+    }
 
 
 
