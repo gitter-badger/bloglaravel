@@ -9,6 +9,7 @@ class CategoriesController extends BaseController{
      * __construct() - конструктор , установили фильтр для защиты от нежелательных атак
      */
     public function __construct(){
+        parent::__construct();
 		$this->beforeFilter('csrf', array('on'=>'post'));
 
 	}

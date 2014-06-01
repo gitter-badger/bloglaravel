@@ -594,16 +594,25 @@ footer{
 
 #admin {
     width: 600px;
-    margin: 0 auto 30px auto;
+    /*margin: 0 auto 0 auto;*/
     padding: 20px;
-    border: 1px solid blue;
+    /*border: 1px solid blue;*/
     border-radius: 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     color: #2e373f;
-    margin-top: 2%;
+    margin-top: 3%;
+    margin-right: 6%;
+    float: left;
 }
-
+#post > div.post-info > div.entry > h2 > a{
+     color: #626262;
+     text-decoration: none;
+ }
+#post > div.post-info > div.entry > h2 > a:hover{
+    color: blue;
+    /*text-decoration: none;*/
+}
 #admin h1{
     font-size: 46px;
     margin-bottom: 15px;

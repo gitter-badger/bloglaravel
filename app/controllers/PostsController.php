@@ -9,6 +9,7 @@ class PostsController extends BaseController{
      * __construct() - конструктор , установили фильтр для защиты от нежелательных атак
      */
     public function __construct(){
+        parent::__construct();
 		$this->beforeFilter('csrf', array('on'=>'post'));
 
 	}
@@ -115,36 +116,44 @@ class PostsController extends BaseController{
                         ->with('message','Изменения были сохранены успешно!!!')
                         ->with('categories', $categories)
                         ->with('postdata', $postdata);
+    }
 
 
-
+    /**
+     * postUpdatePost() - обновления данных по конкретной заметке
+     * @return mixed
+     */
+    public function postUpdatePost(){
+        $id = Input::get('id');
         $validator = Validator::make(Input::all(), Posts::$rules);
 
+        $image = Input::file('image');
+        $filename = time('Y-m-d:H:i:s') . "-" . $image->getClientOriginalname();
+        Image::make($image->getRealPath())->resize(468,249)->save('public/img/products/' . $filename);
+        $image = 'img/products/' . $filename;
+
         if($validator->passes()){
-            $postdata->post_title    = Input::get('post_title');
-            $postdata->post_author   = Input::get('post_author');
-            $postdata->post_date     = date('Y-m-d:H:i:s');
-            $postdata->post_content  = Input::get('post_content');
-            $postdata->category_id   = Input::get('category_id');
-            $postdata->keywords      = Input::get('keywords');
-            $image = Input::file('image');
-            $filename = time('Y-m-d:H:i:s') . "-" . $image->getClientOriginalname();
-            Image::make($image->getRealPath())->resize(468,249)->save('public/img/products/' . $filename);
-            $postdata->image = 'img/products/' . $filename;
-            $postdata->save();
+           DB::table('posts')
+                ->where('id',$id)
+                ->update(array(
+                    'post_title'   => Input::get('post_title'),
+                    'post_author'  => Input::get('post_author'),
+                    'post_date'    => date('Y-m-d:H:i:s'),
+                    'post_content' => Input::get('post_content'),
+                    'category_id'  => Input::get('category_id'),
+                    'keywords'     => Input::get('keywords'),
+                    'image'        => $image
+                ));
 
             return Redirect::to('admin/posts/index')
                 ->with('message','Заметка была отредактирована');
         }
-
-        return Redirect::to('admin/posts/index')
-            ->with('message', 'Редактирование заметки заметки завершилось неудачей. Исправте ошибки!!!')
-            ->withErrors($validator)
-            ->withInput();
-
-
-
-
+        else{
+            return Redirect::to('admin/posts/index')
+                ->with('message', 'Редактирование заметки заметки завершилось неудачей. Исправте ошибки!!!')
+                ->withErrors($validator)
+                ->withInput();
+        }
     }
 
 

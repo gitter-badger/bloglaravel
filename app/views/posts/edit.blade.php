@@ -19,7 +19,7 @@
     @endif
 
 
-    {{ Form::open(array('url'=>'admin/posts/edit-post', 'files' => true)) }}
+    {{ Form::open(array('url'=>'admin/posts/update-post', 'files' => true)) }}
     <p>
         {{ Form::label('category_id' ,'Категория') }}
         {{ Form::select('category_id', $categories, $postdata->category_id) }}
@@ -45,7 +45,8 @@
         {{ Form::label('image', 'Выберите картинку для заметки') }}
         {{ Form::file('image') }}
     </p>
-    {{ Form::submit('Сохранить изменения', array('class'=> 'secondary-btn')) }}
+    {{ Form::hidden('id', $postdata->id) }}
+    {{ Form::submit('Обновить изменения', array('class'=> 'secondary-btn')) }}
     {{ Form::close() }}
 
 </div> <!-- end admin -->

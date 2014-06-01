@@ -72,7 +72,7 @@
 
         <section id="main-content" class="content-post">
 
-
+                <!--@yield('posts')-->
 
                 @if(Session::has('message'))
                     <p class="alert">{{ Session::get('message') }}</p>
@@ -82,12 +82,83 @@
 
 
 
+            <div id="right-sidebar">
+
+
+                <div class="rubrics">
+                    <ul>
+                        <h3>RUBRICS</h3>
+                        <ul>
+                            @foreach($catnav as $cat)
+                                <li>{{ HTML::link('/start/category/' . $cat->id, $cat->name) }}</li>
+                                <hr>
+                            @endforeach
+                        </ul>
+                    </ul>
+                </div><!-- end runrics -->
+
+
+
+                <div class="last-posts">
+                    <ul>
+                        <h3>LATEST POSTS</h3>
+                        <ul>
+                            <li>
+                                <a href="#">70 Must-Have CSS3 and HTML5 Tutorials and Resources http://snurl.com/plkg6</a><br>
+                                <span class="date-create-post">about 6 hours ago</span>
+                            </li>
+                            <hr>
+                            <li>
+                                <a href="#">70 Must-Have CSS3 and HTML5 Tutorials and Resources http://snurl.com/plkg6</a><br>
+                                <span class="date-create-post">about 6 hours ago</span>
+                            </li>
+                            <hr>
+                            <li>
+                                <a href="#">70 Must-Have CSS3 and HTML5 Tutorials and Resources http://snurl.com/plkg6</a><br>
+                                <span class="date-create-post">about 6 hours ago</span>
+                            </li>
+                            <hr>
+                        </ul>
+                    </ul>
+                </div><!-- end last-posts -->
+
+                <div class="most-popular">
+                    <ul>
+                        <h3>MOST POPULAR</h3>
+                        <ul>
+                            <li><a href="#">Aliquam sollicitudin. Donec dapibus nibh</a></li>
+                            <hr>
+                            <li><a href="#">Aliquam sollicitudin. Donec dapibus nibh</a></li>
+                            <hr>
+                            <li><a href="#">Aliquam sollicitudin. Donec dapibus nibh</a></li>
+                            <hr>
+                        </ul>
+                    </ul>
+                </div><!-- end most-popular -->
+
+
+            </div><!-- end right-sidebar -->
+
+
+            <div class="clear"></div>
+
+
+           <!-- <div class="paginator">
+
+            </div> --><!-- end paginator -->
+
+            @yield('pagination')
+
         </section><!-- end main-content -->
 
-        <div class="clear"></div>
+            <div class="clear"></div>
 
 
-        <footer>
+
+
+
+
+            <footer>
             <section id="contact">
                 <p>© 2014 Vitalii Sestrenskyi </p>
             </section><!-- end contact -->

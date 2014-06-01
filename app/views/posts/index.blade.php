@@ -81,6 +81,8 @@
         {{ Form::label('image', 'Выберите картинку для заметки') }}
         {{ Form::file('image') }}
     </p>
+
+
     {{ Form::submit('Создать заметку', array('class'=> 'secondary-btn')) }}
     {{ Form::close() }}
 
