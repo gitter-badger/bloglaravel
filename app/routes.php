@@ -16,3 +16,4 @@ Route::get('/', array('uses' => 'StartController@getIndex'));
 Route::controller('admin/posts', 'PostsController');
 Route::controller('admin/categories', 'CategoriesController');
 Route::controller('start', 'StartController');
+Route::controller('users', 'UsersController');

@@ -19,7 +19,7 @@
             <section id="top-area">
                 <section id="top-area-one">
                     <div id="logo">
-                        <p><a href="/">Exquisite</a>{{HTML::link('')}}</p>
+                        <p><a href="/">Exquisite</a></p>
                     </div><!-- end logo -->
 
                     <div id="slogan">
@@ -33,23 +33,52 @@
 
                 <section id="top-area-two">
                     <div id="user-top-menu">
+
+                    @if(Auth::check())
+
+                        <nav class="dropdown">
+                            <ul>
+                                <li>
+                                    <a href="#">{{ HTML::image('img/user-icon.gif', Auth::user()->firstname) }} {{ Auth::user()->firstname }} {{ HTML::image('img/down-arrow.gif', Auth::user()->firstname) }}</a>
+                                    <ul>
+                                        @if(Auth::user()->admin == 1)
+                                        <li>{{ HTML::link('admin/categories', 'Manage Categories') }}</li>
+                                        <li>{{ HTML::link('admin/products', 'Manage Products') }}</li>
+                                        @endif
+                                        <li>{{ HTML::link('users/signout', 'Sign Out') }}</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+
+                    @else
+
                         <nav class="dropdown">
                             <ul>
                                 <li><a href="#">Home</a></li>
                                 <li><a href="#">Blog</a></li>
                                 <li><a href="#">About</a></li>
                                 <li><a href="#">Contact</a></li>
+                                    <ul>
+                                        <li>{{ HTML::link('users/signin', 'Вход') }}           </li>
+                                        <li>{{ HTML::link('users/newaccount', 'Регистрация') }}</li>
+                                    </ul>
+
                             </ul>
                         </nav>
+
+                    @endif
+
+
                     </div><!-- end user-menu -->
 
                     <div class="clear"></div>
 
                     <div id="search-form">
-                        <p>
-                            <input type="text" class="input-search" placeholder=" Search..." size="40" />
-                            <input type="submit" class="btn-search" value="Search">
-                        </p>
+                        {{ Form::open(array('url' => 'start/search', 'method' => 'get' )) }}
+                        {{ form::text('keyword', null, array('placeholder' => '     Поиск ...', 'class' => 'input-search' )) }}
+                        {{ Form::submit('Поиск', array('class' => 'btn-search submit')) }}
+                        {{ Form::close() }}
                     </div><!-- end search-form -->
 
                     <div class="clear"></div>
@@ -69,6 +98,7 @@
 
         <div class="clear"></div>
 
+                @yield('search-keyword')
 
         <section id="main-content" class="content-post">
 
@@ -172,6 +202,8 @@
                             <li><a href="#">Blog</a></li>
                             <li><a href="#">About</a></li>
                             <li><a href="#">Contact</a></li>
+                            <li>{{ HTML::link('users/signin', 'Вход') }}           </li>
+                            <li>{{ HTML::link('users/newaccount', 'Регистрация') }}</li>
                         </ul>
                     </nav>
                 </div><!-- end user-menu -->

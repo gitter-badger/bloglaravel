@@ -159,7 +159,7 @@ header a:link, header a:visited {
 #user-top-menu, #search-form{
     float: right;
 }
-#search-form p .btn-search{
+#search-form  .btn-search{
     height: 28px;
     background: #36597D;
     padding: 0 5px 0 12px;
@@ -170,7 +170,7 @@ header a:link, header a:visited {
     margin-right: 35px;
     cursor: pointer;
 }
-#search-form p .input-search{
+#search-form  .input-search{
     width: 225px;
     height: 22px;
     border-radius: 9px;
@@ -206,6 +206,7 @@ body #wrapper .maincontent {
     margin-bottom: 31px;
     margin-left: 10px;
     margin-right: 20px;
+    width: 620px;
 }
 #main-content #left-sidebar #post{
     width: 620px;
@@ -947,3 +948,29 @@ button.cart-btn {
     width: 1050px;
 }
 
+#search-keyword > h2 > span{
+    font-style: italic;
+    text-decoration: underline;
+    color: #36597D;
+}
+#search-keyword > h2{
+    font-family: verdana;
+    font-size: 18px;
+}
+#search-keyword{
+    margin-top: 1%;
+    margin-bottom: 0;
+    margin-right: 170px;
+    margin-left: 170px;
+    padding-left: 2%;
+    padding-right: 27%;
+}
+#empty-search-result{
+    margin-top: 11%;
+}
+#empty-search-result > h3{
+    font-family: Verdana;
+    font-size: 13px;
+    margin-left: 3%;
+    color: red;
+}

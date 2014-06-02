@@ -6,7 +6,7 @@
 <div id="admin">
     <h1>Административная панель заметок</h1>
     <hr />
-    <p>Сдесь Вы можите смотреть, удалять и создавать новых заметок</p>
+    <p>Сдесь Вы можите смотреть, удалять и создавать новые заметоки</p>
 
     <h2>Заметки</h2><hr/>
 
@@ -18,8 +18,9 @@
             {{ Form::open(array('url' => 'admin/posts/destroy', 'class' => 'form-inline')) }}
             {{ Form::hidden('id', $post->id) }}
             {{ Form::submit('Удалить') }}
-            {{ Form::close() }} -
-
+            {{ Form::close() }}
+            <br/>
+            <br>
 
             {{ Form::open(array('url' => 'admin/posts/toggle-availability', 'class' => 'form-inline' )) }}
             {{ Form::hidden('id', $post->id) }}
@@ -32,6 +33,8 @@
             {{ Form::hidden('id', $post->id) }}
             {{ Form::submit('Редактировать') }}
             {{ Form::close() }}
+            <br/>
+            <hr/>
 
         </li>
         @endforeach

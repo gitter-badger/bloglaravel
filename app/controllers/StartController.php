@@ -42,7 +42,35 @@
                     ->with('category', Category::find($cat_id));
      }
 
+     /**
+      * getSearch() - поиск по сайту
+      * @return mixed
+      */
+     public function getSearch(){
+         $keyword = Input::get('keyword');
+         $searchResult = Posts::where('post_title', 'LIKE', '%'.$keyword.'%')->get();
 
+         if(empty($keyword)){
+             return View::make('start.search')
+                 ->with('posts', $searchResult)
+                 ->with('keyword', $keyword)
+                 ->with('emptyResult', 'Введите ключевое слово для поиска...');
+         }
+         else{
+             if($searchResult->isEmpty()){
+                 return View::make('start.search')
+                     ->with('posts', $searchResult)
+                     ->with('keyword', $keyword)
+                     ->with('emptyResult', 'К сожалению по данному запросу ничего не найдено...');
+             }else{
+                 return View::make('start.search')
+                     ->with('posts', $searchResult)
+                     ->with('keyword', $keyword)
+                     ->with('emptyResult', '');
+             }
+         }
+
+     }
 
 
 
