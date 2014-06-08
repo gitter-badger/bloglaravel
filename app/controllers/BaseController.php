@@ -5,6 +5,7 @@ class BaseController extends Controller {
     public function __construct(){
         $this->beforeFilter(function(){
            View::share('catnav', Category::all());
+           View::share('lastPosts', Posts::take(5)->where('availability', '=', '1')->orderBy('created_at', 'DESC')->get());
         });
     }
 

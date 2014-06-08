@@ -11,6 +11,7 @@ class PostsController extends BaseController{
     public function __construct(){
         parent::__construct();
 		$this->beforeFilter('csrf', array('on'=>'post'));
+        $this->beforeFilter('admin'); // только админ сможет иметь доступ до всеш методов этого контроллера
 
 	}
 

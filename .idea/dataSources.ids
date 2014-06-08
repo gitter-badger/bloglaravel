@@ -49,6 +49,14 @@
       <column name="updated_at" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <primary-key name="PRIMARY" columns="id"/>
     </table>
+    <table name="slideshow" schema="" catalog="bloglaravel" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="image_url" sqlType="VARCHAR" length="1024" precision="0" nullable="true" jdbcType="12"/>
+      <column name="url" sqlType="VARCHAR" length="1024" precision="0" nullable="true" jdbcType="12"/>
+      <column name="title" sqlType="VARCHAR" length="1024" precision="0" nullable="true" jdbcType="12"/>
+      <column name="order" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
     <table name="users" schema="" catalog="bloglaravel" type="TABLE">
       <column name="id" sqlType="INT UNSIGNED" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="firstname" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
@@ -59,6 +67,7 @@
       <column name="admin" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6" def="MA=="/>
       <column name="created_at" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="updated_at" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="remember_token" sqlType="VARCHAR" length="100" precision="0" nullable="true" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="id"/>
     </table>
     <table name="cds" schema="" catalog="cdcol" type="TABLE">

@@ -48,7 +48,7 @@
       */
      public function getSearch(){
          $keyword = Input::get('keyword');
-         $searchResult = Posts::where('post_title', 'LIKE', '%'.$keyword.'%')->get();
+         $searchResult = Posts::where('post_title', 'LIKE', '%'.$keyword.'%')->paginate(3);
 
          if(empty($keyword)){
              return View::make('start.search')
@@ -69,7 +69,14 @@
                      ->with('emptyResult', '');
              }
          }
+     }
 
+     /**
+      * getContact() - метод отбражения страницы -  О нас
+      * @return mixed
+      */
+     public function getAbout(){
+         return View::make('start.about');
      }
 
 

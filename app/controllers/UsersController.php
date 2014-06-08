@@ -12,6 +12,7 @@ class UsersController extends BaseController{
         $this->beforeFilter('csrf', array('on'=>'post'));
     }
 
+
     /**
      * getNewaccount() - метод загрузки страницы формы регистрации нового аккаунта
      * @return mixed
@@ -78,6 +79,11 @@ class UsersController extends BaseController{
         return Redirect::to('users/signin')
                         ->with('message', 'Вы вышли из учётной записи пользователя');
     }
+
+
+
+
+
 
 
 

@@ -6,7 +6,8 @@
     "require": {
         "laravel/framework": "4.1.*",
         "intervention/image": "dev-master",
-        "moltin/laravel-cart": "dev-master"
+        "moltin/laravel-cart": "dev-master",
+        "barryvdh/laravel-elfinder": "0.1.x"
     },
     "autoload": {
         "classmap": [

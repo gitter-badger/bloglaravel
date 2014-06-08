@@ -6,10 +6,37 @@
             <meta name="description" content="">
             <meta name="viewport" content="width=device-width">
 
+            <!-- Place for tinymce -->
+            <script type="text/javascript" src="{{ URL::asset('js/tinymce/tinymce.min.js') }}"></script>
+            <script type="text/javascript">
+                tinymce.init({
+                    selector: "textarea"
+                });
+            </script>
+            <!--End Place for tinymce -->
 
-            {{HTML::style('css/main.css')}}
-            {{HTML::script('js/vendor/modernizr-2.6.2.min.js')}}
-            <script type="text/script" src="main.js"></script>
+            <!-- Place Buttom Top -->
+            <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+            <script type="text/javascript">
+                $(document).ready(function(){
+
+                    $(window).scroll(function(){
+                        if ($(this).scrollTop() > 100) {
+                            $('.scrollup').fadeIn();
+                        } else {
+                            $('.scrollup').fadeOut();
+                        }
+                    });
+                    $('.scrollup').click(function(){
+                        $("html, body").animate({ scrollTop: 0 }, 600);
+                        return false;
+                    });
+                });
+            </script>
+            <!-- End Place Buttom Top -->
+            {{ HTML::style('css/main.css') }}
+            {{ HTML::script('js/vendor/modernizr-2.6.2.min.js') }}
+
 
         </head>
 
@@ -38,15 +65,23 @@
 
                         <nav class="dropdown">
                             <ul>
-                                <li>
-                                    <a href="#">{{ HTML::image('img/user-icon.gif', Auth::user()->firstname) }} {{ Auth::user()->firstname }} {{ HTML::image('img/down-arrow.gif', Auth::user()->firstname) }}</a>
-                                    <ul>
-                                        @if(Auth::user()->admin == 1)
-                                        <li>{{ HTML::link('admin/categories', 'Manage Categories') }}</li>
-                                        <li>{{ HTML::link('admin/products', 'Manage Products') }}</li>
-                                        @endif
-                                        <li>{{ HTML::link('users/signout', 'Sign Out') }}</li>
-                                    </ul>
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">Blog</a></li>
+                                <li>{{ HTML::link('start/about',  'О сайте') }}</li>
+                                <li><a href="#">Contact</a></li>
+                                <li class="drop">
+                                    <a href="#">{{ HTML::image('img/user-icon.gif', Auth::user()->firstname) }} {{ Auth::user()->firstname }} </a>
+                                    <div class="dropdownContain">
+                                    <div class="dropOut">
+                                        <div class="triangle"></div>
+                                        <ul>
+                                            @if(Auth::user()->admin == 1)
+                                                <li>{{ HTML::link('admin/categories', 'Управления Категориями') }}</li>
+                                                <li>{{ HTML::link('admin/posts', 'Управления Заметками') }}</li>
+                                            @endif
+                                            <li>{{ HTML::link('users/signout', 'Выход') }}</li>
+                                        </ul>
+                                    </div>
                                 </li>
                             </ul>
                         </nav>
@@ -57,13 +92,20 @@
                             <ul>
                                 <li><a href="#">Home</a></li>
                                 <li><a href="#">Blog</a></li>
-                                <li><a href="#">About</a></li>
+                                <li>{{ HTML::link('start/about',  'О сайте') }}</li>
                                 <li><a href="#">Contact</a></li>
-                                    <ul>
-                                        <li>{{ HTML::link('users/signin', 'Вход') }}           </li>
-                                        <li>{{ HTML::link('users/newaccount', 'Регистрация') }}</li>
-                                    </ul>
-
+                                <li class="drop">
+                                    <a href="#">Вход</a>
+                                    <div class="dropdownContain">
+                                        <div class="dropOut">
+                                            <div class="triangle"></div>
+                                            <ul>
+                                                <li>{{ HTML::link('users/signin', 'Вход') }}           </li>
+                                                <li>{{ HTML::link('users/newaccount', 'Регистрация') }}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
                             </ul>
                         </nav>
 
@@ -83,6 +125,10 @@
 
                     <div class="clear"></div>
 
+
+
+
+                    <!--
                     <div id="top-slider">
                         <ul>
                             <li><a href="#"><img src="#"></a></li>
@@ -90,7 +136,10 @@
                             <li><a href="#"><img src="#"></a></li>
                             <li><a href="#"><img src="#"></a></li>
                         </ul>
-                    </div><!-- end top-slider -->
+                    </div>
+                    -->
+                    <!-- end top-slider -->
+
 
                 </section><!-- end top-area  two-->
             </section>
@@ -102,8 +151,6 @@
 
         <section id="main-content" class="content-post">
 
-                <!--@yield('posts')-->
-
                 @if(Session::has('message'))
                     <p class="alert">{{ Session::get('message') }}</p>
                 @endif
@@ -111,43 +158,31 @@
                 @yield('content')
 
 
-
             <div id="right-sidebar">
-
-
                 <div class="rubrics">
                     <ul>
                         <h3>RUBRICS</h3>
                         <ul>
                             @foreach($catnav as $cat)
-                                <li>{{ HTML::link('/start/category/' . $cat->id, $cat->name) }}</li>
-                                <hr>
+                            <li>{{ HTML::link('/start/category/' . $cat->id, $cat->name) }}</li>
+                            <hr>
                             @endforeach
                         </ul>
                     </ul>
                 </div><!-- end runrics -->
 
-
-
                 <div class="last-posts">
                     <ul>
                         <h3>LATEST POSTS</h3>
                         <ul>
-                            <li>
-                                <a href="#">70 Must-Have CSS3 and HTML5 Tutorials and Resources http://snurl.com/plkg6</a><br>
-                                <span class="date-create-post">about 6 hours ago</span>
-                            </li>
-                            <hr>
-                            <li>
-                                <a href="#">70 Must-Have CSS3 and HTML5 Tutorials and Resources http://snurl.com/plkg6</a><br>
-                                <span class="date-create-post">about 6 hours ago</span>
-                            </li>
-                            <hr>
-                            <li>
-                                <a href="#">70 Must-Have CSS3 and HTML5 Tutorials and Resources http://snurl.com/plkg6</a><br>
-                                <span class="date-create-post">about 6 hours ago</span>
-                            </li>
-                            <hr>
+                            @foreach($lastPosts as $lastPost)
+                                <li>
+                                    {{ HTML::link('/start/view/' . $lastPost->id, $lastPost->post_title ) }}
+                                    <br>
+                                    <span class="date-create-post">{{ $lastPost->post_date }}</span>
+                                </li>
+                                <hr>
+                            @endforeach
                         </ul>
                     </ul>
                 </div><!-- end last-posts -->
@@ -200,7 +235,7 @@
                         <ul>
                             <li><a href="#">Home</a></li>
                             <li><a href="#">Blog</a></li>
-                            <li><a href="#">About</a></li>
+                            <li>{{ HTML::link('start/about',  'О сайте') }}</li>
                             <li><a href="#">Contact</a></li>
                             <li>{{ HTML::link('users/signin', 'Вход') }}           </li>
                             <li>{{ HTML::link('users/newaccount', 'Регистрация') }}</li>
@@ -216,5 +251,7 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
 
+
+        <a href="#" class="scrollup">Наверх</a>
         </body>
         </html>
