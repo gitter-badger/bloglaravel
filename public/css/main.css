@@ -102,7 +102,8 @@ p, h1, h2, h3, h4, h5, ul, li {
 
 header {
     background-color: #1a1e1c;
-    height: 372px;
+    /*height: 372px;*/
+    height: 455px;
     box-shadow: -787px -207px 103px 23px #000000 inset;
 }
 
@@ -182,11 +183,11 @@ header a:link, header a:visited {
     font-family: Verdana,Tahoma,Arial,sans-serif;
     color: #ffffff;
     border-radius: 7px;
-    margin-right: 35px;
+    margin-right: 12px;
     cursor: pointer;
 }
 #search-form  .input-search{
-    width: 225px;
+    width: 292px;
     height: 22px;
     border-radius: 9px;
 }
@@ -228,6 +229,12 @@ body #wrapper .maincontent {
     height: 410px;
     background: #ffffff;
     border-radius: 10px;
+}
+#main-content #left-sidebar #postView{
+    width: 620px;
+    background: #ffffff;
+    border-radius: 10px;
+    padding-bottom: 10px;
 }
 #main-content #right-sidebar{
     float: left;
@@ -1223,7 +1230,7 @@ nav {
 #top-area-two  #user-top-menu  nav  ul li:hover a { color: white; }
 #top-area-two  #user-top-menu  nav ul li:hover .dropdownContain { /*top: 65px;*/ top: 23px;}
 #top-area-two  #user-top-menu  nav ul li:hover .underline { border-bottom-color: #777; }
-#top-area-two  #user-top-menu  nav ul li:hover .dropOut { opacity: 1;/* margin-top: 8px;*/ }
+#top-area-two  #user-top-menu  nav ul li:hover .dropOut { opacity: 2;/* margin-top: 8px;*/ }
 
 #user-top-menu > nav > ul > li.drop > div > div > ul > li{
     margin-bottom: 5%;
@@ -1263,4 +1270,11 @@ nav {
     display:none;
     text-indent:-9999px;
     background: url('/img/icon_top.png') no-repeat;
+}
+#search-form{
+    margin-bottom: 8%;
+    margin-top: 3%;
+}
+#top-slider{
+    border: 1px solid green;
 }

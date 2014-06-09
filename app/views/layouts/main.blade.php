@@ -34,6 +34,17 @@
                 });
             </script>
             <!-- End Place Buttom Top -->
+
+            <!-- Social bottoms -->
+            <div class="share42init" data-top1="135" data-top2="20" data-margin="10" data-zero-counter="1"></div>
+            <script type="text/javascript" src="{{ URL::asset('share42/share42.js') }} "></script>
+            <!-- END Social bottoms -->
+
+
+            <script type="text/javascript" src="{{ URL::asset('js/coin-slider.js') }} "></script>
+            <link rel="stylesheet" href="{{ URL::asset('css/coin-slider-styles.css') }} " type="text/css" />
+
+
             {{ HTML::style('css/main.css') }}
             {{ HTML::script('js/vendor/modernizr-2.6.2.min.js') }}
 
@@ -126,6 +137,43 @@
                     <div class="clear"></div>
 
 
+                    <div id="top-slider">
+
+                        <div id='coin-slider'>
+                            <a href="#" target="_blank">
+                                <img src=" {{ URL::asset('img/slideshow/original.jpg') }} " >
+                                <span>
+                                    Description for img01
+                                </span>
+                            </a>
+                            <a href="#" target="_blank">
+                                <img src=" {{ URL::asset('img/slideshow/original1.jpg') }} " >
+                                <span>
+                                    Description for img02
+                                </span>
+                            </a>
+                        </div>
+                        <script>
+                            $('#coin-slider').coinslider(
+                                {
+                                    width: 535, // width of slider panel
+                                    height: 235, // height of slider panel
+                                    //spw: 7, // squares per width
+                                    //sph: 5, // squares per height
+                                    delay: 2000, // delay between images in ms
+                                    //sDelay: 10, // delay beetwen squares in ms
+                                    opacity: 0.7, // opacity of title and navigation
+                                    titleSpeed: 500, // speed of title appereance in ms
+                                    effect: 'swirl', // random, swirl, rain, straight
+                                    navigation: true, // prev next and buttons
+                                    links : true, // show images as links
+                                    hoverPause: true // pause on hover
+                                }
+                            );
+                        </script>
+
+
+                    </div>
 
 
                     <!--

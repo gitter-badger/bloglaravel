@@ -10,7 +10,7 @@
         <h3>RECENT POSTS</h3>
     </div>
 
-    <div id="post">
+    <div id="postView">
         <div class="foto-post">
             <a href="/start/view/{{ $post->id }}">
                {{ HTML::image($post->image, $post->post_title, array('width'=>'593', 'height'=>'190')) }}
