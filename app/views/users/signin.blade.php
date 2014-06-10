@@ -17,7 +17,7 @@
                         {{ Form::password('password') }}
                     </p>
 
-                {{ Form::submit('Вход', array('type' => 'submit' , 'class' => 'secondary-btn') ) }}
+                {{ Form::submit('Вход', array('type' => 'submit' , 'class' => 'btn btn-primary') ) }}
                 {{ Form::close() }}
             </section>
             <section id="signup">

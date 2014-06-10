@@ -108,7 +108,7 @@ header {
 }
 
 header a:link, header a:visited {
-    color: #5daad0;
+    //color: #5daad0;
     text-decoration: none;
 
 }
@@ -270,7 +270,7 @@ body #wrapper .maincontent {
     float: right;
 }
 .post-info{
-    margin-top: 7px;
+    margin-top: 27px;
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 28px;
@@ -1042,7 +1042,7 @@ button.cart-btn {
 
 #signin-form input {
     width: 300px;
-    padding: 10px 10px 10px 30px;
+    padding: 10px 10px 10px 10px;
     margin-bottom: 10px;
     border: 1px solid #eee;
     border-radius: 10px;
@@ -1050,6 +1050,11 @@ button.cart-btn {
     -webkit-border-radius: 10px;
     color: #c3c3c3;
 }
+#signin-form input[type="text"] {
+    padding: 10px 10px 10px 30px;
+}#signin-form  input[type="password"]{
+     padding: 10px 10px 10px 30px;
+ }
 
 #signup h3 {
     font-size: 14px;
@@ -1075,9 +1080,14 @@ button.cart-btn {
     border: 1px solid black;
 }
 #signup > a{
-    font-family: Verdana;
+    font-family: Verdana !important;
+    text-decoration: none;
+    font-size: 14px;
 }
-#signin-form > form > input.secondary-btn{
+#signup > a:hover{
+    color: #ffffff;
+}
+#signin-form > form > input.secondary-btn !important{
     font-family: verdana;
 }
 /*
@@ -1145,7 +1155,7 @@ nav {
     display: inline-block;
 }
 #top-area-two  #user-top-menu  nav  ul li a {
-   /* line-height: 80px;*/
+    //line-height: 80px;
     line-height: 18px;
     padding: 0 15px;
     height: 80px;
@@ -1171,10 +1181,14 @@ nav {
     left: 50%;
     margin-left: -8px;
 }
+
+
+
+
 .dropdownContain {
     width: 160px;
     position: absolute;
-    /*z-index: 2;*/
+    z-index: 2;
     left: 50%;
     margin-left: -80px; /* half of width */
     top: -400px;
@@ -1230,7 +1244,7 @@ nav {
 #top-area-two  #user-top-menu  nav  ul li:hover a { color: white; }
 #top-area-two  #user-top-menu  nav ul li:hover .dropdownContain { /*top: 65px;*/ top: 23px;}
 #top-area-two  #user-top-menu  nav ul li:hover .underline { border-bottom-color: #777; }
-#top-area-two  #user-top-menu  nav ul li:hover .dropOut { opacity: 2;/* margin-top: 8px;*/ }
+#top-area-two  #user-top-menu  nav ul li:hover .dropOut { opacity: 1;/* margin-top: 8px;*/ }
 
 #user-top-menu > nav > ul > li.drop > div > div > ul > li{
     margin-bottom: 5%;
@@ -1277,4 +1291,12 @@ nav {
 }
 #top-slider{
     border: 1px solid green;
+}
+#right-sidebar > div.last-posts > ul > ul > li > a{
+    font-family: verdana;
+}
+#search-form > form > input.input-medium.search-query{
+    height: 33px;
+    width: 300px;
+    border-radius: 12px;
 }

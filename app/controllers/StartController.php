@@ -79,6 +79,41 @@
          return View::make('start.about');
      }
 
+     /**
+      * @return mixed getIndex() - метод отображения страницы обратной связи
+      */
+     public function getFeedback(){
+         return View::make('start.feedback');
+     }
+
+
+     /**
+      * @return mixed postCreateFeedback() - метод создания нового feedback сообщения
+      */
+     public function postCreateFeedback(){
+         $validator = Validator::make(Input::all(), Feedback::$rules);
+
+         if($validator->passes()){
+             $feedback = new Feedback;
+             $feedback->firstname = Input::get('firstname');
+             $feedback->email     = Input::get('email');
+             $feedback->goal      = Input::get('goal');
+             $feedback->question  = Input::get('question');
+             $feedback->date      = date('Y-m-d:H:i:s');
+             $feedback->save();
+
+             return Redirect::to('/')
+                 ->with('message', 'Ваше обращение отправлено и будет рассмотрено в ближайшее время. Об это Вы будите оповещены по электронной почте.');
+
+         }else{
+
+             return Redirect::to('start/feedback')
+                 ->with('message', 'Что то пошло не так. Ваше обращения не было отправлено!!!')
+                 ->withErrors($validator)
+                 ->withInput();
+         }
+     }
+
 
 
 

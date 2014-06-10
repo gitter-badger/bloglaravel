@@ -6,7 +6,7 @@
 class PostsController extends BaseController{
 
     /**
-     * __construct() - конструктор , установили фильтр для защиты от нежелательных атак
+     * __construct() - конструктор , установили фильтр для защиты от нежелательных атак + фильтр для админки
      */
     public function __construct(){
         parent::__construct();

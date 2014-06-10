@@ -44,7 +44,9 @@
             <script type="text/javascript" src="{{ URL::asset('js/coin-slider.js') }} "></script>
             <link rel="stylesheet" href="{{ URL::asset('css/coin-slider-styles.css') }} " type="text/css" />
 
-
+            {{ HTML::style('tb/css/bootstrap.css') }}
+            {{ HTML::style('tb/css/bootstrap-theme.min.css') }}
+            {{ HTML::script('tb/js/bootstrap.min.js') }}
             {{ HTML::style('css/main.css') }}
             {{ HTML::script('js/vendor/modernizr-2.6.2.min.js') }}
 
@@ -127,10 +129,10 @@
 
                     <div class="clear"></div>
 
-                    <div id="search-form">
+                    <div id="search-form" >
                         {{ Form::open(array('url' => 'start/search', 'method' => 'get' )) }}
-                        {{ form::text('keyword', null, array('placeholder' => '     Поиск ...', 'class' => 'input-search' )) }}
-                        {{ Form::submit('Поиск', array('class' => 'btn-search submit')) }}
+                        {{ form::text('keyword', null, array('placeholder' => '   Поиск ...', 'class' => 'input-medium search-query', 'id' => 'id="focusedInput"' )) }}
+                        {{ Form::submit('Поиск', array('class' => 'btn')) }}
                         {{ Form::close() }}
                     </div><!-- end search-form -->
 
