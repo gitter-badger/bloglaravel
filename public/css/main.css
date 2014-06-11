@@ -647,8 +647,9 @@ footer{
     /*text-decoration: none;*/
 }
 #admin h1{
-    font-size: 46px;
+    font-size: 31px;
     margin-bottom: 15px;
+    text-align: center;
 }
 
 #admin label {
@@ -658,6 +659,7 @@ footer{
 
 #admin p {
     font-size: 14px;
+    text-align: justify;
 }
 
 #admin p input {
@@ -973,11 +975,11 @@ button.cart-btn {
 
 .alert {
     background-color: #faf9f9;
-    color: #5daad0;
+    color: red;
     border: 1px solid #ccc;
     padding: 10px;
     margin: 10px;
-    width: 1050px;
+    width: 100%;
 }
 
 #search-keyword > h2 > span{
@@ -1299,4 +1301,66 @@ nav {
     height: 33px;
     width: 300px;
     border-radius: 12px;
+}
+#contact-info{
+    width: 609px;
+    margin: 5% 4% 2% 4%;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    color: #2e373f;
+    float: left;
+}
+
+#contact-info > h1{
+    font-family: Verdana;
+    font-size: 20px;
+    font-weight: bold;
+}
+#contact-info > form > input.secondary-btn{
+    margin: 3% 18% 0 17%;
+    font-family: Verdana;
+}
+#contact-info h1,
+#personal-details h1 {
+    font-size: 16px;
+    font-weight: normal;
+    margin-bottom: 15px;
+}
+
+#contact-info label,
+#personal-details label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#contact-info p,
+#personal-details p {
+    font-size: 12px;
+}
+
+#contact-info p input,
+#personal-details p input {
+    width: 300px;
+    border: 1px solid #eee;
+    padding: 10px;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+
+#contact-info .required-field,
+#personal-details .required-field {
+    color: #5daad0;
+}
+#admin > h2{
+    font-size: 19px;
+    font-weight: bold;
+    text-align: center;
+}
+#admin > table > tbody > tr > td{
+    font-family: Verdana;
+    font-size: 12px;
 }

@@ -21,8 +21,8 @@ class Feedback extends Eloquent{
      */
     public static $rules = array(
         'email'     => 'required|email',
-        'firstname' => 'reqired|min:3',
-        'question'  => 'required|min:10'
+        'firstname' => 'required|min:3',
+        'question'  => 'required|min:3'
     );
 
 

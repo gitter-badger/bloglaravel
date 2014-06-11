@@ -75,12 +75,15 @@ class FeedbackController extends BaseController{
     }
 
 
+    /**
+     * @return mixed postResponseFeedback() - метод обработки конкретного feedback и отправки письма с ответом пользователю
+     */
     public function postResponseFeedback(){
         $id = Input::get('id');
         $validator = Validator::make(Input::all(), Feedback::$rules);
 
         if($validator->passes()){
-            DB::table('feedback')
+            DB::table('feedbacks')
                     ->where('id', '=', $id)
                     ->update(array(
                         'firstname'     => Input::get('firstname'),
@@ -91,11 +94,42 @@ class FeedbackController extends BaseController{
                         'text_response' => Input::get('text_response')
                     ));
 
+            //отправка email
+
+            $user = array(
+                'adminEmail'        => 'sestrinskiy@mail.ru',
+                'adminName'         => 'Vitalii',
+                'customerEmail'     => Input::get('email'),
+                'customerFirstname' => Input::get('firstname')
+            );
+
+            $data = array(
+                'firstname'     => Input::get('firstname'),
+                'email'         => Input::get('email'),
+                'goal'          => Input::get('goal'),
+                'question'      => Input::get('question'),
+                'date'          => date('Y-m-d:H:i:s'),
+                'text_response' => Input::get('text_response'),
+                'adminName'     => $user['adminName'],
+                'adminEmail'    => $user['sestrinskiy@mail.ru']
+            );
+
+            Mail::send('emails.feedback', $data, function($message) use ($user){
+                $message->from($user['sestrinskiy@mail.ru'], $user['adminName']);
+                $message->to($user['customerEmail'], $user['customerFirstname'])
+                        ->subject('Спасибо за Ваш вопрос');
+            });
+
+
+            return Redirect::to('admin/feedback/index')
+                            ->with('message', 'Feedback был обработал успешно и письмо было отправлено пользователю!!!');
+
         }else{
-
+            return Redirect::to('admin/feedback/view')
+                            ->with('message', 'Что то пошло не так попробуйте еще раз!!!')
+                            ->withErrors($validator)
+                            ->withInput();
         }
-
-
     }
 
 

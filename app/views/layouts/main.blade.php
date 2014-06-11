@@ -81,7 +81,7 @@
                                 <li><a href="#">Home</a></li>
                                 <li><a href="#">Blog</a></li>
                                 <li>{{ HTML::link('start/about',  'О сайте') }}</li>
-                                <li><a href="#">Contact</a></li>
+                                <li> {{ HTML::link('start/feedback', 'Контакты' ) }} </li>
                                 <li class="drop">
                                     <a href="#">{{ HTML::image('img/user-icon.gif', Auth::user()->firstname) }} {{ Auth::user()->firstname }} </a>
                                     <div class="dropdownContain">
@@ -91,6 +91,7 @@
                                             @if(Auth::user()->admin == 1)
                                                 <li>{{ HTML::link('admin/categories', 'Управления Категориями') }}</li>
                                                 <li>{{ HTML::link('admin/posts', 'Управления Заметками') }}</li>
+                                                <li>{{ HTML::link('admin/feedback', 'Управления feedbacks') }}</li>
                                             @endif
                                             <li>{{ HTML::link('users/signout', 'Выход') }}</li>
                                         </ul>
@@ -106,7 +107,7 @@
                                 <li><a href="#">Home</a></li>
                                 <li><a href="#">Blog</a></li>
                                 <li>{{ HTML::link('start/about',  'О сайте') }}</li>
-                                <li><a href="#">Contact</a></li>
+                                <li> {{ HTML::link('start/feedback', 'Контакты' ) }} </li>
                                 <li class="drop">
                                     <a href="#">Вход</a>
                                     <div class="dropdownContain">
@@ -286,7 +287,7 @@
                             <li><a href="#">Home</a></li>
                             <li><a href="#">Blog</a></li>
                             <li>{{ HTML::link('start/about',  'О сайте') }}</li>
-                            <li><a href="#">Contact</a></li>
+                            <li> {{ HTML::link('start/feedback', 'Контакты' ) }} </li>
                             <li>{{ HTML::link('users/signin', 'Вход') }}           </li>
                             <li>{{ HTML::link('users/newaccount', 'Регистрация') }}</li>
                         </ul>
