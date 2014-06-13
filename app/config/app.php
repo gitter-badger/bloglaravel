@@ -120,7 +120,8 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
         'Intervention\Image\ImageServiceProvider',
-        'Barryvdh\Elfinder\ElfinderServiceProvider'
+        'Barryvdh\Elfinder\ElfinderServiceProvider',
+        'Barryvdh\Debugbar\ServiceProvider'
 
 	),
 

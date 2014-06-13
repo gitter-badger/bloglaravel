@@ -7,7 +7,8 @@
         "laravel/framework": "4.1.*",
         "intervention/image": "dev-master",
         "moltin/laravel-cart": "dev-master",
-        "barryvdh/laravel-elfinder": "0.1.x"
+        "barryvdh/laravel-elfinder": "0.1.x",
+        "barryvdh/laravel-debugbar": "dev-master"
     },
     "autoload": {
         "classmap": [
@@ -35,6 +36,9 @@
     "config": {
         "preferred-install": "dist"
     },
+    "post-update-cmd": [
+        "php artisan debugbar:publish"
+    ],
     "minimum-stability": "dev",
     "prefer-stable": true
 }
